@@ -29,11 +29,6 @@ int preorderTraversal(TreeNode *root)
             {
                 if (last == curr->right)
                 {
-                    if (curr == root)
-                        return ret;
-                    last = curr;
-                    curr = path.top();
-                    path.pop();
                 }
                 else if (last == curr->left)
                 {
@@ -45,13 +40,13 @@ int preorderTraversal(TreeNode *root)
                     }
                     else
                     {
-                        if (curr == root)
-                            return ret;
-                        last = curr;
-                        curr = path.top();
-                        path.pop();
                     }
                 }
+                if (curr == root)
+                    return ret;
+                last = curr;
+                curr = path.top();
+                path.pop();
             }
         }
     }

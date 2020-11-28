@@ -27,7 +27,8 @@ vector<int> postorderTraversal(TreeNode *root)
             {
                 if (last == curr->right)
                 {
-                    res.push_back(curr->val);
+                    //visit current node
+                    cout<<curr->val<<", ";
                 }
                 else if (last == curr->left)
                 {
@@ -39,7 +40,8 @@ vector<int> postorderTraversal(TreeNode *root)
                     }
                     else
                     {
-                        res.push_back(curr->val);
+                        //visit current node
+                        cout<<curr->val<<", ";
                     }
                 }
                 if(path.empty()) break;
