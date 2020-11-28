@@ -1,12 +1,14 @@
 #include "util.cpp"
 
-vector<int> postorderTraversal(TreeNode *root)
+int preorderTraversal(TreeNode *root)
 {
     stack<TreeNode *> path;
-    vector<int> res;
     TreeNode *curr = root;
     while (curr)
     {
+        //visit current node;
+        cout << curr->val << ", ";
+
         //visit left subtree
         if (curr->left)
         {
@@ -27,7 +29,11 @@ vector<int> postorderTraversal(TreeNode *root)
             {
                 if (last == curr->right)
                 {
-                    res.push_back(curr->val);
+                    if (curr == root)
+                        return ret;
+                    last = curr;
+                    curr = path.top();
+                    path.pop();
                 }
                 else if (last == curr->left)
                 {
@@ -39,18 +45,17 @@ vector<int> postorderTraversal(TreeNode *root)
                     }
                     else
                     {
-                        res.push_back(curr->val);
+                        if (curr == root)
+                            return ret;
+                        last = curr;
+                        curr = path.top();
+                        path.pop();
                     }
                 }
-                if(path.empty()) break;
-                last = curr;
-                curr = path.top();
-                path.pop();
             }
-            if(curr==root) break;
-        };
+        }
     }
-    return res;
+    return ret;
 }
 int main(){
     TreeNode *root = new TreeNode(4, new TreeNode(9, new TreeNode(5, nullptr, nullptr), new TreeNode(1, nullptr, nullptr)), new TreeNode(0, nullptr, nullptr));
