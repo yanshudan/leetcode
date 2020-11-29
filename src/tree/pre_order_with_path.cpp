@@ -1,21 +1,16 @@
 #include "util.cpp"
 class Solution {
 public:
-    int tsum;
     vector<TreeNode *> path;
-    vector<int> vals;
     void add_path(TreeNode* node){
         //actions when new path is found
-        tsum+=node->val;
         path.push_back(node);
-        vals.push_back(node->val);
     }
     void rm_path(){
         //actions when retreive from path
-        tsum-= *vals.rbegin();
         path.pop_back();
-        vals.pop_back();
     }
+    bool deeper(){ return depth<mindepth;}
     vector<vector<int>> pathSum(TreeNode* root, int sum) {
         TreeNode *curr = root;
         vector<vector<int>> ret;
@@ -25,13 +20,13 @@ public:
             cout << curr->val << ", ";
             
             //visit left subtree
-            if (curr->left)
+            if (curr->left && deeper())
             {
                 add_path(curr);
                 curr = curr->left;
             }
             //visit right subtree
-            else if (curr->right)
+            else if (curr->right && deeper())
             {
                 add_path(curr);
                 curr = curr->right;
