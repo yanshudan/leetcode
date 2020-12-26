@@ -93,6 +93,7 @@
         "editor.findMatchHighlighBackground": "#ff0000",
         "editor.findMatchHighlightBorder": "#cf0000"
     },
-    "python.pythonPath": "/opt/rh/rh-python36/root/usr/bin/python",
-    "synthwave84.brightness": 1
+    "python.pythonPath": "C:\\Users\\hqjiang\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
+    "synthwave84.brightness": 1,
+    "C_Cpp.errorSquiggles": "Disabled"
 }

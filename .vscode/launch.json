@@ -10,8 +10,8 @@
             "request":"launch",
             "program":"${file}",
             "console":"integratedTerminal",
-            "args":["-i", "ea_sender_update.log", "-o", "ea_sender_update.txt", "-t", "4"],
-            "cwd":"${workspaceFolder}/app_home/logs"
+            // "args":["-i", "ea_sender_update.log", "-o", "ea_sender_update.txt", "-t", "4"],
+            "cwd":"${workspaceFolder}"
         },
         {
             "name": "g++ - 生成和调试活动文件",
