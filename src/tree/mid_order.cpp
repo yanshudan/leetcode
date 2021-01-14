@@ -1,30 +1,28 @@
 #include "util.cpp"
 vector<int> inorderTraversal(TreeNode *root)
 {
-    stack<TreeNode *> s;
-    TreeNode *curr = root;
-    vector<int> res;
-    while (curr)
-    {
-        if (curr->left)
-        {
+    TreeNode* curr=root;
+    stack<TreeNode*> s;
+    while(curr){
+        if(curr->left){
             s.push(curr);
-            curr = curr->left;
-            continue;
-        };
-        res.push_back(curr->val);
-        if (curr->right)
-        {
-            curr = curr->right;
-            continue;
-        };
-        while (curr->right == nullptr && (!s.empty()))
-        {
-            curr = s.top();
-            res.push_back(curr->val);
-            s.pop();
+            curr=curr->left;
         }
-        curr = curr->right;
+        else if(curr->right){
+            //visit current node
+            visit(curr);
+            curr=curr->right;
+        }else{
+            //visit current node
+            visit(curr);
+            while(!s.empty() && curr->right==nullptr){
+                curr=s.top();
+                s.pop();
+                //visit current node
+                visit(curr);
+            }
+            curr=curr->right;
+        }
     }
-    return res;
+    return root;
 }
