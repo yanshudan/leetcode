@@ -17,6 +17,7 @@
 # Strategies
 # Data Structure
 ## Array&String(std::vector,std::string)(deprecated)
+### Trie 字典树
 ## Stack(std::stack)
 - 常规应用：150逆波兰表达式 71路径简化
 - 单调栈：弹出比栈顶小的元素(下标)，来获得每个元素的下一个更大元素，739每日温度 剑指59II队列的最大值 503下一个更大元素
@@ -69,10 +70,23 @@ TODO： **平衡二叉树的增删操作** 701插入 450删除 654最大二叉�
 - 统计满二叉树的节点个数等其他变种 222完全二叉树的节点个数
 - 基于值的中点查询下标：378有序矩阵的topK 两个有序序列的中位数
 ## Sorting
+## Recursion/Divide&Conquer
+## Memorization/Backtracking
 ## Dynamic Programming
 - 问题判定：最优子结构
 - 边界条件/递归基
 - 状态转移方程：预设子问题的解已知
 - 空间优化：观察dp数组的引用，未被引用的空间可改为滚动数组
 ## Greedy Alogorithm
-## DFS/BFS
+## Graph Algorithm:DFS/BFS 
+## UnionFind
+# Omitted Tags
+- 树状数组
+- 线段树
+- 设计
+- 极小化极大
+- 拓扑排序
+- 蓄水池抽样
+- 几何
+- 数学
+- 脑筋急转弯
