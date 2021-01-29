@@ -1,57 +1,55 @@
 class Solution {
 public:
-    typedef pair<int,int> Pair;
+    int rows;
+    int cols;
+    queue<int> q;
+    void visit(vector<vector<int>>& grid, int i,int j){
+        if(i<0 || i>=rows || j<0 || j>=cols) return;
+        auto& v=grid[i][j];
+        if (v==1){
+            q.push(i*cols+j);
+            v=2;
+        }
+    }
     int orangesRotting(vector<vector<int>>& grid) {
-        int rows=grid.size();
-        int cols=grid[0].size();
-        queue<Pair> q;
-        const Pair null(-1,-1);
-        for(int i=0;i<rows;i++){
-            for(int j=0;j<cols;j++){
-                auto& v=grid[i][j];
+        rows=grid.size();
+        cols=grid[0].size();
+        int tmp=0;
+        for(auto& vec:grid){
+            for(auto& v:vec){
                 if(v==2){
-                    q.push({i,j});
+                    q.push(tmp);
                     v=0;//remove rotted oranges;
                 }
+                ++tmp;
             }
         }
-        q.push(null);
-        Pair tmp(0,0);
+        q.push(-1);
+        int i=0,j=0;
+        tmp=0;
         int rounds=0;
         while (true){
-            while(q.front()!=null){
+            while(q.front()!=-1){
                 tmp=q.front();
-                if(tmp.first<rows-1  && grid[tmp.first+1][tmp.second]==1) {
-                    q.push({tmp.first+1,tmp.second});
-                    grid[tmp.first+1][tmp.second]=2;
-                }
-                if(tmp.first>0       && grid[tmp.first-1][tmp.second]==1) {
-                    q.push({tmp.first-1,tmp.second});
-                    grid[tmp.first-1][tmp.second]=2;
-                }
-                if(tmp.second<cols-1 && grid[tmp.first][tmp.second+1]==1) {
-                    q.push({tmp.first,tmp.second+1});
-                    grid[tmp.first][tmp.second+1]=2;
-                }
-                if(tmp.second>0      && grid[tmp.first][tmp.second-1]==1) {
-                    q.push({tmp.first,tmp.second-1});
-                    grid[tmp.first][tmp.second-1]=2;
-                }
-                grid[tmp.first][tmp.second]=0;
+                i=tmp/cols;
+                j=tmp%cols;
+                visit(grid,i+1,j);
+                visit(grid,i-1,j);
+                visit(grid,i,j+1);
+                visit(grid,i,j-1);
+                grid[i][j]=0;
                 q.pop();
             }
             q.pop();
             ++rounds;
             if(q.empty()) break;
-            q.push(null);
+            q.push(-1);
         }
-        for(int i=0;i<rows;i++){
-            for(int j=0;j<cols;j++){
-                auto& v=grid[i][j];
+        for(auto& vec:grid){
+            for(auto& v:vec){
                 if(v!=0) return -1;
             }
         }
-
         return rounds-1;
     }
 };
