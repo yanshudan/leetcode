@@ -1,7 +1,11 @@
 #include "util.cpp"
 class Solution {
 public:
+    int depth;
+    int mindepth;
+
     vector<TreeNode *> path;
+
     void add_path(TreeNode* node){
         //actions when new path is found
         path.push_back(node);
@@ -69,6 +73,6 @@ public:
 };
 int main(){
     TreeNode *root = new TreeNode(4, new TreeNode(9, new TreeNode(5, nullptr, nullptr), new TreeNode(1, nullptr, nullptr)), new TreeNode(0, nullptr, nullptr));
-    auto res=postorderTraversal(root);
+    auto res=Solution().postorderTraversal(root);
     for(auto e:res) cout<<e<<", ";
 }
