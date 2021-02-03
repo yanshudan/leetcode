@@ -7,27 +7,24 @@ vector<int> preorderTraversal(TreeNode *root)
     while (curr)
     {
         //visit current node
-        res.push_back(curr->val);
+        visit(curr);
         //visit left subtree
-        if (curr->left)
-        {
-            s.push(curr);
+        if (curr->left){
+            if(curr->right) s.push(curr);
             curr = curr->left;
-            continue;
         }
-        //visit right subtree
-        if (curr->right)
-        {
+        else if (curr->right){
+            //visit right subtree
             curr = curr->right;
-            continue;
         }
-        //for leaf node
-        while (curr->right == nullptr && (!s.empty()))
-        {
-            curr = s.top();
-            s.pop();
+        else{
+            //for leaf node
+            if (!s.empty()){
+                curr = s.top();
+                s.pop();
+            }
+            curr = curr->right;
         }
-        curr = curr->right;
     }
     return res;
 }

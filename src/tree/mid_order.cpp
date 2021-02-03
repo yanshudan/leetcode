@@ -8,11 +8,7 @@ vector<int> inorderTraversal(TreeNode *root)
             s.push(curr);
             curr=curr->left;
         }
-        else if(curr->right){
-            //visit current node
-            visit(curr);
-            curr=curr->right;
-        }else{
+        else{
             //visit current node
             visit(curr);
             while(!s.empty() && curr->right==nullptr){
