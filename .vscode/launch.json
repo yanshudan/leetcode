@@ -5,23 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name":"Python: 当前文件",
-            "type":"python",
-            "request":"launch",
-            "program":"${file}",
-            "console":"integratedTerminal",
-            // "args":["-i", "ea_sender_update.log", "-o", "ea_sender_update.txt", "-t", "4"],
-            "cwd":"${workspaceFolder}"
-        },
-        {
             "name": "g++ - 生成和调试活动文件",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/src/${fileBasenameNoExtension}",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             
             // "args": [">>out.log"],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/src",
+            "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -35,6 +26,15 @@
             // "coreDumpPath": "${workspaceFolder}/bin/",
             "preLaunchTask": "compile current file",
             "miDebuggerPath": "/usr/bin/gdb"
+        },
+        {
+            "name":"Python: 当前文件",
+            "type":"python",
+            "request":"launch",
+            "program":"${file}",
+            "console":"integratedTerminal",
+            // "args":["-i", "ea_sender_update.log", "-o", "ea_sender_update.txt", "-t", "4"],
+            "cwd":"${fileDirname}"
         }
     ]
 }
