@@ -20,7 +20,9 @@ https://leetcode-cn.com/problemset/algorithms/?difficulty=%E4%B8%AD%E7%AD%89&sta
 - 前缀和：限制前缀和所对应的字串长度时，应反向索引，在某一元素可使用时再加入map或其他查询容器中
 - 逆向思维：预设结果已知/反向搜索/反向迭代
 - 下一个排列：寻找第一个下降对，反转之前的有序部分，再执行一次对换
+- 区间类问题 通常可以考虑按照右端点优先排序
 - LRU Cache：双向链表解决查找后移动到表头的功能 map解决结点的O（1）访问
+- 原地哈希:有限范围的重复数字，将数字移动到arr[i]=i的位置上，达到O(n)的复杂度
 # Strategies
 # Data Structure
 ## Array&String(std::vector,std::string)(deprecated)
